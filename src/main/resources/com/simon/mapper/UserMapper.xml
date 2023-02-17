@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace:名称空间
+-->
+
+<!--名称空间，随便按个，后面执行SQL需要-->
+<!--<mapper namespace="test">-->
+<!--    <select id="selectAll" resultType="user">-->
+<!--        select *-->
+<!--        from tb_user;-->
+<!--    </select>-->
+<!--    <select id="selectById" resultType="user">-->
+<!--        select *-->
+<!--        from tb_user where id = #{id};-->
+<!--    </select>-->
+<!--</mapper>-->
+
+<mapper namespace="com.simon.mapper.UserMapper">
+    <select id="selectAll" resultType="user"> <!--mybatis-config.xml 类型别名 typeAliases com.simon.model.User-->
+        select *from tb_user;
+    </select>
+
+    <!--    <select id="selectById" resultType="user">-->
+<!--        select *-->
+<!--        from tb_user where id = #{id};-->
+<!--    </select>-->
+
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_user(username,password,gender,addr)
+        values (#{username},#{password},#{gender},#{addr});
+    </insert>
+
+    <select id="select" resultType="user">
+        select *
+        from tb_user
+        where username=#{username} and password = #{param2};
+    </select>
+
+</mapper>
